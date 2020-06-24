@@ -1,23 +1,26 @@
+package beer;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package beer;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author fhcmartins
  */
 public class BeerExpert {
-
     public List<String> getBrands(String estilo) {
         List<String> brands = new ArrayList<>();
         
         if (estilo.equals("American Brown Ale")) {
+            brands.add("<h2>American Brown Ale</h2>");
+            
             brands.add("<strong>Impressão Geral: </strong>");
             brands.add("<br><br>Uma cerveja maltada, mas lupulada, frequentemente com sabores de chocolate e caramelo."
                     + "<br> O sabor e o aroma do lúpulo complementam e melhoram a percepção do malte, ao invés de confrontá-lo.");
@@ -39,6 +42,8 @@ public class BeerExpert {
             brands.add("<a href='https://www.levteck.com.br/tipo_de_cerveja/american-brown-ale/' target='_blank'>https://www.levteck.com.br/tipo_de_cerveja/american-brown-ale/</a>");
         }
         else if (estilo.equals("Belgian Blond Ale")){
+            brands.add("<h2>Belgian Blond Ale</h2>");
+            
             brands.add("<strong>Impressão Geral: </strong>");
             brands.add("<br><br>Uma ale dourada, de intensidade moderada, que tem uma complexidade sutil frutada-picante,"
                     + "<br> de levedura belga, com um pouco de sabor de malte doce e um final seco.");
@@ -58,6 +63,8 @@ public class BeerExpert {
             
         }
         else if (estilo.equals("Lambic Fruit")){
+            brands.add("<h2>Lambic Fruit</h2>");
+            
             brands.add("<strong>Impressão Geral: </strong>");
             brands.add("<br><br>Uma cerveja de trigo Wild complexa, frutada, agradavelmente ácida, fermentada por uma variedade de microbiota belga, e apresentando as contribuições"
                     + "<br>de frutas misturadas com o caráter wild. O tipo de fruta pode às vezes ser difícil de identificar como características fermentadas e envelhecidas que"
@@ -75,7 +82,7 @@ public class BeerExpert {
                     + "<br>As frutas utilizadas tradicionalmente usadas incluem cerejas ácidas (com buracos), framboesas ou uvas Moscatel. Exemplos mais recentes incluem pêssegos, damascos"
                     + "<br>ou uvas Merlot. Tradicionalmente se utilizam frutas acres ou ácidas pois sua finalidade não é adoçar a cerveja, mas sim para adicionar uma nova dimensão."
                     + "<br>Tradicionalmente, essas cervejas são espontaneamente fermentadas com leveduras e bactérias de origem natura, encontradas no ambiente, predominantemente em barricas de carvalho."
-                    + ",Os barris usados são antigos e têm pouco caráter carvalho, então não espere um caráter de carvalho fresco ou nessa linha – um caráter mais neutro é típico. As versões caseiras e"
+                    + "<br>Os barris usados são antigos e têm pouco caráter carvalho, então não espere um caráter de carvalho fresco ou nessa linha – um caráter mais neutro é típico. As versões caseiras e"
                     + "<br>artesanais são tipicamente elaboradas com culturas puras de levedura normalmente incluindo Saccharomyces, Brettanomyces, Pediococcus e Lactobacillus, numa tentativa de recriar"
                     + "<br>os efeitos da microbiota dominante em Bruxelas e nos arredores do Vale do Rio Senna. As culturas retiradas de garrafas são por vezes utilizadas, mas não há nenhuma maneira simples"
                     + "<br>de se saber se os organismos ainda são viáveis.");
@@ -84,6 +91,8 @@ public class BeerExpert {
             brands.add("<a href='https://www.levteck.com.br/tipo_de_cerveja/fruit-lambic/' target='_blank'>https://www.levteck.com.br/tipo_de_cerveja/fruit-lambic/</a>");
         }
         else if (estilo.equals("Witbier")){
+            brands.add("<h2>Witbier</h2>");
+            
             brands.add("<strong>Impressão Geral: </strong>");
             brands.add("<br><br>Uma ale à base de trigo, refrescante, elegante, saborosa, de moderada intensidade.");
             
@@ -103,4 +112,5 @@ public class BeerExpert {
         
         return brands;
     }
+    
 }

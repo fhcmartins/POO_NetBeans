@@ -1,0 +1,50 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package beer;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+import static javafx.scene.paint.Color.color;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author fhcmartins
+ */
+@WebServlet(name = "BeerSelect", urlPatterns = {"/beerSelect"})
+public class BeerSelect extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        String estilo = request.getParameter("estilo");
+        
+        BeerExpert beerExpert = new BeerExpert();
+        List<String> brands = beerExpert.getBrands(estilo);
+        
+        request.setAttribute("brands", brands);
+        
+        RequestDispatcher rd = request.getRequestDispatcher("result.jsp");
+        rd.forward(request, response);
+    }
+
+}
