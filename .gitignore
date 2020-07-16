@@ -60,3 +60,4 @@ pom.xml.tag
 # Gitignore for HTML
 
 
+/MVC_Pessoa2/nbproject/private/

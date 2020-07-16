@@ -1,11 +1,11 @@
 <%-- 
-    Document   : pessoa
-    Created on : Jul 3, 2020, 11:49:08 PM
+    Document   : matricula
+    Created on : 15 de jul de 2020, 13:07:05
     Author     : flavi
 --%>
 
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="java.util.*,pessoa.Pessoa"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*,pessoa.Matricula"%>
 
 <!DOCTYPE html>
 <html>
@@ -14,11 +14,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h2 align="center">Pessoa</h2>
-        <form method="POST" action="PessoaServlet">
-            <br> RG: <input type="text" name="RG" /><br>
-            <br> Nome: <input type="text" name="nome" /><br>
-            <br> Email: <input type="text" name="email" /><br>
+        <h2 align="center">Matricula</h2>
+        
+        <form method="POST" action="MatriculaServlet">
+            <br> Código: <input type="text" name="codigo" /><br>
+            <br> Disciplina: <input type="text" name="disciplina" /><br>
+            <br> Aluno: <input type="text" name="aluno" /><br>
+            <br> Data: <input type="text" name="data" /><br>
             <br>
             <!Create, Read, Read All, Update e Delete>
                 <input type="submit" name="buttonCreate" value="Adicionar" />            
@@ -32,10 +34,10 @@
 
         <hr><ol> <%
             @SuppressWarnings("unchecked")
-            List<Pessoa> pessoas = (List<Pessoa>)request.getAttribute("pessoas");
-            if (pessoas != null) {
-                for (Pessoa pessoa : pessoas) { %>
-                    <li> <%= pessoa %> </li> <%
+            List<Matricula> matriculas = (List<Matricula>)request.getAttribute("matriculas");
+            if (matriculas != null) {
+                for (Matricula matricula : matriculas) { %>
+                    <li> <%= matricula %> </li> <%
                 }
             } %>
         </ol><hr>
