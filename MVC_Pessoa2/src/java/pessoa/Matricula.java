@@ -22,19 +22,21 @@ public class Matricula implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String codigo;
-    private Disciplina disciplina;
+    private String mcodigo;
     private Aluno aluno;
-    private String data;
+    private Disciplina disciplina;
+    private String semestre;  
+    private String ano;
     
     // Construtor
-    public Matricula(String codigo, Disciplina disciplina, Aluno aluno, String data) {
-        this.codigo = codigo;
-        this.disciplina = disciplina;
+    public Matricula(String mcodigo, Aluno aluno, Disciplina disciplina, String semestre, String ano) {
+        this.mcodigo = mcodigo;
         this.aluno = aluno;
-        this.data = data;
-    }    
-
+        this.disciplina = disciplina;
+        this.semestre = semestre;
+        this.ano = ano;
+    }
+       
     // Getters and Setters    
     public Long getId() {
         return id;
@@ -44,12 +46,12 @@ public class Matricula implements Serializable {
         this.id = id;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getMcodigo() {
+        return mcodigo;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setMcodigo(String mcodigo) {
+        this.mcodigo = mcodigo;
     }
 
     public Disciplina getDisciplina() {
@@ -68,12 +70,20 @@ public class Matricula implements Serializable {
         this.aluno = aluno;
     }
 
-    public String getData() {
-        return data;
+    public String getSemestre() {
+        return semestre;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setSemestre(String semestre) {
+        this.semestre = semestre;
+    }
+
+    public String getAno() {
+        return ano;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
     }
 
     @Override
@@ -98,14 +108,12 @@ public class Matricula implements Serializable {
 
     @Override
     public String toString() {
-        return "Matricula{" + "codigo = " + codigo
-                + ", disciplina = " + disciplina
+        return "Matricula{" + "codigo = " + mcodigo
                 + ", aluno = " + aluno
-                + ", data = " + data + '}';
-    }
+                + ", disciplina = " + disciplina
+                + ", semestre = " + semestre
+                + ", ano = " + ano + '}';
+    }   
    
 }
-
-
-
 

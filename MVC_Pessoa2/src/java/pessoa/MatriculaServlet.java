@@ -23,19 +23,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "MatriculaServlet", urlPatterns = {"/MatriculaServlet"})
 public class MatriculaServlet extends HttpServlet {
 
-    private static String codigo; // Cod. da matricula
-    private static String data;
-    private static Aluno RA;
-    private static Disciplina disciplina;
-    
-    // Injected DAO EJB
-    @EJB
-    DisciplinaDao disciplinaDao;
-    @EJB
-    AlunoDao alunoDao;
-    @EJB
-    MatriculaDao matriculaDao;
-        
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -45,6 +32,23 @@ public class MatriculaServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    private static String mcodigo;
+    private static Aluno aluno;
+    private static Disciplina disciplina;
+    private static String semestre;
+    private static String ano;
+    private static Matricula matricula;
+    
+    // Injected DAO EJB:
+    @EJB
+    AlunoDao alunoDao;
+    @EJB             
+    DisciplinaDao disciplinaDao;
+    @EJB
+    MatriculaDao matriculaDao;      
+    
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -80,38 +84,22 @@ public class MatriculaServlet extends HttpServlet {
         }
         
         if (request.getParameter("buttonRead") != null) {
-            codigo = request.getParameter("codigo");
-            
-            // Listando matriculas pelo código
+            mcodigo = request.getParameter("mcodigo");
             List<Matricula> matriculas = new ArrayList<>();
-            matriculas = matriculaDao.getMatricula(codigo);
-            if(matriculas.size()>0)
-                request.setAttribute("matriculas", matriculas);
+            matriculas = matriculaDao.getMatricula(mcodigo);
             
-            // Listando alunos pelo RA
-            List<Aluno> alunos = new ArrayList<>();
-            alunos = alunoDao.getAluno(RA);
-            if(alunos.size()>0)
-                request.setAttribute("RA", alunos);
+            if(matriculas.size()>0)
+                request.setAttribute("matriculas", matriculas);   
         }
         
         if (request.getParameter("buttonReadAll") != null) {
             List<Matricula> matriculas = new ArrayList<>();
             matriculas = matriculaDao.getAllMatriculas();
             if(matriculas.size()>0)
-                request.setAttribute("matriculas", matriculas);
-            
-            List<Aluno> alunos = new ArrayList<>();
-            alunos = alunoDao.getAllAlunos();
-            if(alunos.size()>0)
-                request.setAttribute("RA", alunos);
+                request.setAttribute("matriculas", matriculas);    
         }
-        
-        if (request.getParameter("buttonDel") != null) {
-            matriculaDao.deleteMatricula(codigo);
-        }
-        
-        request.getRequestDispatcher("/matricula.jsp").forward(request, response);
+             
+        request.getRequestDispatcher("/matricula.jsp").forward(request, response); 
     }
 
     /**
@@ -125,40 +113,49 @@ public class MatriculaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        if(request.getParameter("buttonCreate") != null){
-            codigo = request.getParameter("codigo");
-            System.err.println(codigo);
-            data = request.getParameter("data");
-            RA = request.getParameter("RA");
-            disciplina = request.getParameter("disciplina");
-                            
+                 
+        if(request.getParameter("buttonCreate")!=null){
+            mcodigo= request.getParameter("mcodigo");
+            
+            String RA = request.getParameter("RA");
             List<Aluno> alunos = alunoDao.getAluno(RA);
             aluno = alunos.get(0);
             
-            Matricula matricula = new Matricula(codigo, disciplina, RA, data);
-            disciplinaDao.perssist(disciplina);
+            String codigoDisc = request.getParameter("codigoDisc");
+            List<Disciplina> disciplinas = disciplinaDao.getDisciplina(codigoDisc);
+            disciplina = disciplinas.get(0);
+            
+            semestre = request.getParameter("semestre");
+            ano = request.getParameter("ano");
+            
+            Matricula matricula = new Matricula(mcodigo, aluno, disciplina, semestre, ano);
+            matriculaDao.perssist(matricula);
         }
         
-        if (request.getParameter("buttonUpdate") != null){
-            codigo = request.getParameter("codigo");
-            System.err.println(codigo);
-            data = request.getParameter("data");
-            RA = request.getParameter("RA");
-            disciplina = request.getParameter("disciplina");
+        if(request.getParameter("buttonUpdate")!=null){
+            mcodigo= request.getParameter("mcodigo");
             
-            Matricula matricula = new Matricula(codigo, disciplina, RA, data);
+            String RA = request.getParameter("RA");
+            List<Aluno> alunos = alunoDao.getAluno(RA);
+            aluno = alunos.get(0);
             
-            if(request.getParameter("buttonCreate") != null){
-                matriculaDao.perssist(matricula);
-            }
+            String mcodigo = request.getParameter("mcodigo");
+            List<Disciplina> disciplinas = disciplinaDao.getDisciplina(mcodigo);
+            disciplina = disciplinas.get(0);
             
-            if(request.getParameter("buttonUpdate") != null){
-                matriculaDao.updateMatricula(matricula);
-            }
+            semestre = request.getParameter("semestre");
+            ano = request.getParameter("ano");
+            
+            Matricula matricula = new Matricula(mcodigo, aluno, disciplina, semestre, ano);
+            matriculaDao.updateMatricula(matricula);
         }
         
-        // Display the list of alunos:
+        if (request.getParameter("buttonDel") != null) {
+            mcodigo= request.getParameter("mcodigo");
+            matriculaDao.deleteMatricula(mcodigo);
+        }
+        
+        // Display the list of matriculas:
         doGet(request, response);
     }
 
@@ -173,24 +170,5 @@ public class MatriculaServlet extends HttpServlet {
     }// </editor-fold>
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

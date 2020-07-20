@@ -25,16 +25,30 @@ public class ProfessorDao {
         em.persist(professor);
     }
    
-    public List<Professor> getAllProfessor(){
+    public List<Professor> getAllProfessores(){
         TypedQuery<Professor> query = em.createQuery("SELECT p FROM Professor p ORDER BY p.nome", Professor.class);
         return query.getResultList();
     }
+    
+    public List<Professor> getProfessor(String matricula){
+        TypedQuery<Professor> query = em.createQuery("SELECT p FROM Professor p WHERE p.matricula = :matricula", Professor.class);
+        query.setParameter("matricula", matricula);
+        return query.getResultList();
+    }
+    
+    /*
+    public List<Professor> getAllProfessores(){
+        TypedQuery<Professor> query = em.createQuery("SELECT p FROM Professor p ORDER BY p.nome", Professor.class);
+        return query.getResultList();
+    }
+    
    
      public List<Professor> getProfessor(String matricula){
         TypedQuery<Professor> query = em.createQuery("SELECT p FROM Professor p WHERE p.matricula = :matricula", Professor.class);
         query.setParameter("Matricula", matricula);
         return query.getResultList();
     }
+    */
     
     public void deleteProfessor(String matricula){
         List<Professor> professores = this.getProfessor(matricula);
@@ -51,4 +65,13 @@ public class ProfessorDao {
         professores.get(0).setArea(professor.getArea());
         em.merge(professores.get(0));
     }
+    
+    List<Professor> getProfessor(Professor matricula) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
+
+
+
+

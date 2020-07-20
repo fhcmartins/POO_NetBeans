@@ -83,15 +83,14 @@ public class ProfessorServlet extends HttpServlet {
             if(professores.size()>0)
                 request.setAttribute("professores", professores);
         }
+        
         if (request.getParameter("buttonReadAll") != null) {
             List<Professor> professores = new ArrayList<>();
-            professores = professorDao.getAllProfessor();
+            professores = professorDao.getAllProfessores();
             if(professores.size()>0)
                 request.setAttribute("professores", professores);  
         }
-        if (request.getParameter("buttonDel") != null) {
-            professorDao.deleteProfessor(matricula);
-        }     
+            
         request.getRequestDispatcher("/professor.jsp").forward(request, response);
     }
 
@@ -115,7 +114,7 @@ public class ProfessorServlet extends HttpServlet {
         area = request.getParameter("area");
         regime = request.getParameter("regime");
                 
-        Professor professor = new Professor (matricula, titulo, area, regime, RG, nome, email);
+        Professor professor = new Professor(matricula, titulo, area, regime, RG, nome, email);
         
         if(request.getParameter("buttonCreate")!= null){
             professorDao.perssist(professor);
@@ -124,6 +123,11 @@ public class ProfessorServlet extends HttpServlet {
         if(request.getParameter("buttonUpdate")!= null){
             professorDao.updateProfessor(professor);
         }
+        
+        if(request.getParameter("buttonDel") != null){
+            professorDao.deleteProfessor(matricula);
+        }
+        
         // Display the list of alunos:
         doGet(request, response);
     }
@@ -139,3 +143,7 @@ public class ProfessorServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
+
+
+

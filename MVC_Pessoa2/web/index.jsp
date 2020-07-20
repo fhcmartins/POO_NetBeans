@@ -12,16 +12,18 @@
         <title>JSP Index</title>
     </head>
     <body>
-        <h2 align="center" textcolor="red">INDEX</h2>
-        <form method="POST" action="indexServlet">
-            <br>
-            <!Create, Read, Read All, Update e Delete>
-                <input type="submit" name="buttonPessoa" value="Pessoa" />    
-                <input type="submit" name="buttonAluno" value="Aluno" />
-                <input type="submit" name="buttonProfessor" value="Prefessor" />
-                <input type="submit" name="buttonDisciplina" value="Disciplina" />
-                <input type="submit" name="buttonMatricula" value="Matricula" />
-            <br>
-        </form> 
+        <div align="center">
+        <h2>INDEX</h2>
+            <form method="POST" action="indexServlet">
+                <br>
+                <!Create, Read, Read All, Update e Delete>
+                    <input type="submit" name="buttonPessoa" value="Pessoa" />    
+                    <input type="submit" name="buttonAluno" value="Aluno" />
+                    <input type="submit" name="buttonProfessor" value="Prefessor" />
+                    <input type="submit" name="buttonDisciplina" value="Disciplina" />
+                    <input type="submit" name="buttonMatricula" value="Matricula" />
+                <br>
+            </form>
+        </div>
     </body>
 </html>

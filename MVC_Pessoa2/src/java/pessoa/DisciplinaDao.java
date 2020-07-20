@@ -30,19 +30,19 @@ public class DisciplinaDao {
         return query.getResultList();
     }
    
-     public List<Disciplina> getDisciplina(String codigo){
-        TypedQuery<Disciplina> query = em.createQuery("SELECT d FROM Disciplina d WHERE d.codigo = :codigo", Disciplina.class);
-        query.setParameter("codigo", codigo);
+     public List<Disciplina> getDisciplina(String dcodigo){
+        TypedQuery<Disciplina> query = em.createQuery("SELECT d FROM Disciplina d WHERE d.dcodigo = :dcodigo", Disciplina.class);
+        query.setParameter("dcodigo", dcodigo);
         return query.getResultList();
     }
     
-    public void deleteDisciplina(String codigo){
-        List<Disciplina> disciplinas = this.getDisciplina(codigo);
+    public void deleteDisciplina(String dcodigo){
+        List<Disciplina> disciplinas = this.getDisciplina(dcodigo);
         em.remove(disciplinas.get(0));
     }
    
     public void updateDisciplina(Disciplina disciplina){
-        List<Disciplina> disciplinas = this.getDisciplina(disciplina.getCodigo());
+        List<Disciplina> disciplinas = this.getDisciplina(disciplina.getDcodigo());
         disciplinas.get(0).setNome(disciplina.getNome());
         disciplinas.get(0).setSemestre(disciplina.getSemestre());
         disciplinas.get(0).setCurso(disciplina.getCurso());
@@ -53,6 +53,3 @@ public class DisciplinaDao {
     }
     
 }
-
-
-

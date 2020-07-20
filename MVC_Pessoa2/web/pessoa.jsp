@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>JSP Pessoa</title>
     </head>
     <body>
         <h2 align="center">Pessoa</h2>
@@ -21,12 +21,14 @@
             <br> Email: <input type="text" name="email" /><br>
             <br>
             <!Create, Read, Read All, Update e Delete>
+            <div align="center">
                 <input type="submit" name="buttonCreate" value="Adicionar" />            
                 <input type="submit" name="buttonRead" value="Encontrar" />                         
                 <input type="submit" name="buttonReadAll" value="Todos" />
-                <input type="submit" name="buttonUpdate" value="Altearar" />
+                <input type="submit" name="buttonUpdate" value="Alterar" />
                 <input type="submit" name="buttonDel" value="Apagar" />               
                 <input type="submit" name="buttonVoltar" value="Voltar" />
+            </div>
             <br>
         </form>
 

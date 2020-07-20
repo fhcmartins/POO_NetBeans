@@ -1,6 +1,6 @@
 <%-- 
     Document   : matricula
-    Created on : 15 de jul de 2020, 13:07:05
+    Created on : 18/07/2020, 01:40:59
     Author     : flavi
 --%>
 
@@ -11,29 +11,33 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>JSP Matricula</title>
     </head>
+    
     <body>
         <h2 align="center">Matricula</h2>
         
         <form method="POST" action="MatriculaServlet">
-            <br> Código: <input type="text" name="codigo" /><br>
-            <br> Disciplina: <input type="text" name="disciplina" /><br>
-            <br> Aluno: <input type="text" name="aluno" /><br>
-            <br> Data: <input type="text" name="data" /><br>
-            <br>
+            <br> Codigo Matricula: <input type="text" name="mcodigo" /><br>
+            <br> RA Aluno: <input type="text" name="RA" /><br> 
+            <br> Codigo Disciplina: <input type="text" name="codigoDisc" /><br> 
+            <br> Semestre: <input type="text" name="semestre" /><br> 
+            <br> ano: <input type="text" name="ano" /><br> 
+            <br> 
             <!Create, Read, Read All, Update e Delete>
-                <input type="submit" name="buttonCreate" value="Adicionar" />            
-                <input type="submit" name="buttonRead" value="Encontrar" />                         
-                <input type="submit" name="buttonReadAll" value="Todos" />
+            <div align="center">
+                <input type="submit" name="buttonCreate" value="Adicionar" />             
+                <input type="submit" name="buttonRead" value="Encontrar" />                          
+                <input type="submit" name="buttonReadAll" value="Todos" /> 
                 <input type="submit" name="buttonUpdate" value="Altearar" />
-                <input type="submit" name="buttonDel" value="Apagar" />               
+                <input type="submit" name="buttonDel" value="Apagar" />                
                 <input type="submit" name="buttonVoltar" value="Voltar" />
-            <br>
+            </div>
+            <br> 
         </form>
-
+ 
         <hr><ol> <%
-            @SuppressWarnings("unchecked")
+            @SuppressWarnings("unchecked") 
             List<Matricula> matriculas = (List<Matricula>)request.getAttribute("matriculas");
             if (matriculas != null) {
                 for (Matricula matricula : matriculas) { %>
@@ -41,8 +45,8 @@
                 }
             } %>
         </ol><hr>
-
+ 
         <iframe src="http://www.objectdb.com/pw.html?jee-netbeans"
             frameborder="0" scrolling="no" width="100%" height="30"> </iframe>
-    </body>
+     </body>
 </html>

@@ -82,6 +82,7 @@ public class DisciplinaServlet extends HttpServlet {
         }
         
         if (request.getParameter("buttonRead") != null) {
+            codigo = request.getParameter("codigo");
             List<Disciplina> disciplinas = new ArrayList<>();
             disciplinas = disciplinaDao.getDisciplina(codigo);
             if(disciplinas.size()>0)
@@ -115,7 +116,7 @@ public class DisciplinaServlet extends HttpServlet {
             throws ServletException, IOException {
         if(request.getParameter("buttonCreate") != null){
             codigo = request.getParameter("codigo");
-            System.err.println(matricula);
+            //System.err.println(matricula);
             nome = request.getParameter("nome");
             semestre = request.getParameter("semestre");
             curso = request.getParameter("curso");
@@ -168,6 +169,8 @@ public class DisciplinaServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
+
 
 
 

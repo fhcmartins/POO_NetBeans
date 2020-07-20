@@ -99,12 +99,13 @@ public class Professor extends Pessoa implements Serializable {
 
     @Override
     public String toString() {
-        return "Professor{" + "matricula=" + matricula
-                + ", titulo=" + titulo
-                + ", area=" + area
-                + ", regime=" + regime
+        return "Professor{" + "matricula = " + matricula
+                + ", titulo = " + titulo
+                + ", area = " + area
+                + ", regime = " + regime
                 + ", " + super.toString() + '}';
     }
     
 }
+
 

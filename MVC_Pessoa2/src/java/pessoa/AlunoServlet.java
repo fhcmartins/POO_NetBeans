@@ -80,15 +80,14 @@ public class AlunoServlet extends HttpServlet {
             if(alunos.size()>0)
                 request.setAttribute("alunos", alunos);
         }
+        
         if (request.getParameter("buttonReadAll") != null) {
             List<Aluno> alunos = new ArrayList<>();
             alunos = alunoDao.getAllAlunos();
             if(alunos.size()>0)
                 request.setAttribute("alunos", alunos);  
         }
-        if (request.getParameter("buttonDel") != null) {
-            alunoDao.deleteAluno(RA);
-        }     
+       
         request.getRequestDispatcher("/aluno.jsp").forward(request, response);
     }
 
@@ -117,6 +116,11 @@ public class AlunoServlet extends HttpServlet {
         if(request.getParameter("buttonUpdate")!= null){
             alunoDao.updateAluno(aluno);
         }
+        
+        if (request.getParameter("buttonDel") != null){
+            alunoDao.deleteAluno(RA);
+        }
+        
         // Display the list of alunos:
         doGet(request, response);
     }
@@ -132,3 +136,4 @@ public class AlunoServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+

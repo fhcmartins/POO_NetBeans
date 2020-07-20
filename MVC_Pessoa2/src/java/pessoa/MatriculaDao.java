@@ -17,40 +17,38 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class MatriculaDao {
-
-    /// Injected database connection:
+    
+    // Injected database connection:
     @PersistenceContext private EntityManager em;
-
+ 
     public void perssist(Matricula matricula){
         em.persist(matricula);
     }
-   
+    
     public List<Matricula> getAllMatriculas(){
-        TypedQuery<Matricula> query = em.createQuery("SELECT m FROM Matricula m ORDER BY m.nome", Matricula.class);
-        return query.getResultList();
-    }
-   
-     public List<Matricula> getMatricula(String codigo){
-        TypedQuery<Matricula> query = em.createQuery("SELECT m FROM Matricula m WHERE m.codigo = :codigo", Matricula.class);
-        query.setParameter("codigo", codigo);
+        TypedQuery<Matricula> query = em.createQuery("SELECT m FROM Matricula m ORDER BY m.ano", Matricula.class);
         return query.getResultList();
     }
     
-    public void deleteMatricula(String codigo){
-        List<Matricula> matriculas = this.getMatricula(codigo);
+    public List<Matricula> getMatricula(String mcodigo){
+        TypedQuery<Matricula> query = em.createQuery("SELECT m FROM Matricula m WHERE m.mcodigo = :mcodigo", Matricula.class);
+        query.setParameter("mcodigo", mcodigo);
+        return query.getResultList();
+    }
+     
+    public void deleteMatricula(String mcodigo){
+        List<Matricula> matriculas = this.getMatricula(mcodigo);
         em.remove(matriculas.get(0));
     }
-   
+    
     public void updateMatricula(Matricula matricula){
-        List<Matricula> matriculas = this.getMatricula(matricula.getCodigo());
-        matriculas.get(0).setCodigo(matricula.getCodigo());
-        matriculas.get(0).setDisciplina(matricula.getDisciplina());
+        List<Matricula> matriculas = this.getMatricula(matricula.getMcodigo());
         matriculas.get(0).setAluno(matricula.getAluno());
-        matriculas.get(0).setData(matricula.getData());
+        matriculas.get(0).setDisciplina(matricula.getDisciplina());        
+        matriculas.get(0).setSemestre(matricula.getSemestre());
+        matriculas.get(0).setAno(matricula.getAno());
         em.merge(matriculas.get(0));
     }
 }
-
-
 
 

@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>CRUD Aluno</title>
+        <title>JPS Aluno</title>
     </head>
     <body>
         <h2 align="center">Aluno</h2>
@@ -23,12 +23,14 @@
             <br> Curso: <input type="text" name="curso" /><br>
             <br>
             <!Create, Read, Read All, Update e Delete>
+            <div align="center">
                 <input type="submit" name="buttonCreate" value="Adicionar" />            
                 <input type="submit" name="buttonRead" value="Encontrar" />                         
                 <input type="submit" name="buttonReadAll" value="Todos" />
-                <input type="submit" name="buttonUpdate" value="Altearar" />
+                <input type="submit" name="buttonUpdate" value="Alterar" />
                 <input type="submit" name="buttonDel" value="Apagar" />               
                 <input type="submit" name="buttonVoltar" value="Voltar" />
+            </div>
             <br>
         </form>
 
@@ -37,7 +39,7 @@
             List<Aluno> alunos = (List<Aluno>)request.getAttribute("alunos");
             if (alunos != null) {
                 for (Aluno aluno : alunos) { %>
-                    <li> <%= alunos %> </li> <%
+                    <li> <%= aluno %> </li> <%
                 }
             } %>
         </ol><hr>

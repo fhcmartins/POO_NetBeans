@@ -78,6 +78,9 @@ public class Pessoa implements Serializable {
 
     @Override
     public String toString() {
-        return "Pessoa{" + "RG = " + RG + ", nome = " + nome + ", email = " + email + '}';
+        return "Pessoa{" + "RG = " + RG
+                + ", nome = " + nome
+                + ", email = " + email + '}';
     }
 }
+

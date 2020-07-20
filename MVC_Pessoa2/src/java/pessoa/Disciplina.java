@@ -22,19 +22,18 @@ public class Disciplina implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String codigo;
+    private String dcodigo;
     private String nome;
     private String semestre;
     private String curso;
     private String horasAula;
     private String ementa;
     private Professor professor;
-    
-    // Construtor
 
-    public Disciplina(String codigo, String nome, String semestre, String curso,
-                    String horasAula, String ementa, Professor professor) {
-        this.codigo = codigo;
+    // Construtor
+    public Disciplina(String dcodigo, String nome, String semestre, String curso,
+            String horasAula, String ementa, Professor professor) {
+        this.dcodigo = dcodigo;
         this.nome = nome;
         this.semestre = semestre;
         this.curso = curso;
@@ -42,14 +41,14 @@ public class Disciplina implements Serializable {
         this.ementa = ementa;
         this.professor = professor;
     }
-    
+
     // Getters ans Setters
-    public String getCodigo() {
-        return codigo;
+    public String getDcodigo() {
+        return dcodigo;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setDcodigo(String codigo) {
+        this.dcodigo = dcodigo;
     }
 
     public String getNome() {
@@ -130,7 +129,7 @@ public class Disciplina implements Serializable {
 
     @Override
     public String toString() {
-        return "Disciplina{" + "codigo = " + codigo
+        return "Disciplina{" + "dcodigo = " + dcodigo
                 + ", nome = " + nome
                 + ", semestre = " + semestre
                 + ", curso = " + curso
@@ -138,7 +137,7 @@ public class Disciplina implements Serializable {
                 + ", ementa = " + ementa
                 + ", professor=" + professor + '}';
     }
-   
+
 }
 
 
